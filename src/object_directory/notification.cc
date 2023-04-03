@@ -527,7 +527,14 @@ void NotificationServer::worker_loop() {
 }
 
 int main(int argc, char **argv) {
-  std::string host_ip_address = get_host_ipaddress();
+  std::string host_ip_address;
+
+  if (argc > 1) {
+    host_ip_address = std::string(argv[1]);
+  } else {
+    host_ip_address = get_host_ipaddress();
+  }
+
   std::unique_ptr<NotificationServer> notification_server;
   std::thread notification_server_thread;
   ::hoplite::RayLog::StartRayLog("object_directory[" + host_ip_address + "]",
