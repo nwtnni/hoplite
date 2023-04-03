@@ -1,6 +1,6 @@
 # This file should only be sourced.
 
-MY_IPADDR=$(hostname -i)
+MY_IPADDR=$(hostname -I | cut -f1 -d" ")
 # OTHERS_IPADDR=()
 # for s in $(ray get-worker-ips ~/ray_bootstrap_config.yaml); do
 #     OTHERS_IPADDR+=($(ssh -o StrictHostKeyChecking=no $s hostname -i));
