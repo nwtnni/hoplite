@@ -1,6 +1,7 @@
 #include "logging.h"
 #include <arpa/inet.h>
 #include <chrono>
+#include <cstdlib>
 #include <cstring>
 #include <ctime>
 #include <errno.h>
@@ -100,14 +101,5 @@ void send_ack(int fd) {
 }
 
 std::string get_host_ipaddress() {
-  char hostbuffer[256];
-  // To retrieve hostname
-  DCHECK(gethostname(hostbuffer, sizeof(hostbuffer)) != -1);
-  // To retrieve host information
-  struct hostent *host_entry = gethostbyname(hostbuffer);
-  DCHECK(host_entry != nullptr);
-  // To convert an Internet network address into ASCII string.
-  char *ip_buf = inet_ntoa(*((struct in_addr *)host_entry->h_addr_list[0]));
-  DCHECK(ip_buf != nullptr);
-  return std::string(ip_buf);
+  return std::string(std::getenv("MY_IPADDR"));
 }
