@@ -4,7 +4,7 @@ if [ -z "$3" ]; then echo "ERROR: test name, node number and input size required
 
 SCRIPT_DIR=$(dirname $(realpath -s $0))
 TEST_UNILS_DIR=$(realpath -s $SCRIPT_DIR/../../test_utils)
-source $TEST_UNILS_DIR/load_cluster_env.sh
+source /root/ip.sh
 
 test_name=$1 # can be allgather/allreduce/gather/multicast/reduce
 make $test_name > /dev/null

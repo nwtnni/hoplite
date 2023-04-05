@@ -1,5 +1,7 @@
 #!/bin/bash
 logging_file=$GLOO_LOGGING_DIR/rank_$OMPI_COMM_WORLD_RANK.log
+mkdir -p $GLOO_LOGGING_DIR
+source /root/ip.sh
 $GLOO_DIR/build/gloo/benchmark/benchmark \
     --size $OMPI_COMM_WORLD_SIZE \
     --rank $OMPI_COMM_WORLD_RANK \

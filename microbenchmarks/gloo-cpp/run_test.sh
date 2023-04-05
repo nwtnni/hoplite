@@ -22,7 +22,7 @@ SCRIPT_DIR=$(dirname $(realpath -s $0))
 TEST_UNILS_DIR=$(realpath -s $SCRIPT_DIR/../../test_utils)
 GLOO_DIR=$SCRIPT_DIR/gloo/
 
-source $TEST_UNILS_DIR/load_cluster_env.sh
+source /root/ip.sh
 
 # prepare logging directory
 log_dir=$SCRIPT_DIR/log/$(date +"%Y%m%d-%H%M%S.%N")-$test_name-$world_size-$object_size

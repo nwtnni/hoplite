@@ -26,6 +26,7 @@ if [ ! -f $test_executable_abspath ]; then
 fi
 
 # get cluster info
+source /root/ip.sh
 OTHERS_IPADDR=(${OTHERS_IPADDR[@]:0:$(($world_size-1))})
 echo "$(tput setaf 2)[INFO]$(tput sgr 0) head_node: $MY_IPADDR; other_nodes: ${OTHERS_IPADDR[@]}"
 
