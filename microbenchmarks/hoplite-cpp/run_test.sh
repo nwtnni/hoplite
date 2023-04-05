@@ -26,7 +26,6 @@ if [ ! -f $test_executable_abspath ]; then
 fi
 
 # get cluster info
-source $TEST_UNILS_DIR/load_cluster_env.sh
 OTHERS_IPADDR=(${OTHERS_IPADDR[@]:0:$(($world_size-1))})
 echo "$(tput setaf 2)[INFO]$(tput sgr 0) head_node: $MY_IPADDR; other_nodes: ${OTHERS_IPADDR[@]}"
 
@@ -41,9 +40,9 @@ ln -sfn $log_dir/ $SCRIPT_DIR/log/latest
 export RAY_BACKEND_LOG_LEVEL=info
 
 pkill notification
-sleep 0.5
-($BINARIES_DIR/notification 2>&1 | tee $log_dir/$MY_IPADDR.notification.log) &
-sleep 0.5
+sleep 2
+($BINARIES_DIR/notification $MY_IPADDR 2>&1 | tee $log_dir/$MY_IPADDR.notification.log) &
+sleep 2
 
 all_nodes=(${ALL_IPADDR[@]:0:$world_size})
 all_hosts=$(echo ${all_nodes[@]} | sed 's/ /,/g')
