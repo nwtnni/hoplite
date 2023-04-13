@@ -16,4 +16,4 @@ mkdir build
 cd build
 # Redis is required for the benchmark.
 cmake ../ -DBUILD_BENCHMARK=1 -DUSE_REDIS=ON
-make -j8
+make -j$(nproc)
