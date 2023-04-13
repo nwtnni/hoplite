@@ -9,6 +9,7 @@ $GLOO_DIR/build/gloo/benchmark/benchmark \
     --redis-port 7799 \
     --prefix benchmark-$test_name-$OMPI_COMM_WORLD_SIZE-$object_size \
     --transport tcp \
+    --tcp-device enp0s4 \
     --elements $(($object_size / 4)) \
     --iteration-count 1 \
     $test_name \
