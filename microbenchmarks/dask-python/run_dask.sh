@@ -9,9 +9,9 @@ TEST_UNILS_DIR=$(realpath -s $SCRIPT_DIR/../../test_utils)
 world_size=$1
 
 if [ "$#" -eq 1 ]; then
-    source $TEST_UNILS_DIR/load_cluster_env.sh
+    source /root/ip.sh
     OTHERS_IPADDR=(${OTHERS_IPADDR[@]:0:$(($world_size-1))})
-    
+
     dask-scheduler &
     sleep 1
 
@@ -25,7 +25,6 @@ if [ "$#" -eq 1 ]; then
 else
     master=$1
     index=$2
-    source ~/anaconda3/etc/profile.d/conda.sh
-    conda activate
+    source /root/hoplite-conda/bin/activate
     dask-worker $master:8786 --name Dask-$index
 fi
